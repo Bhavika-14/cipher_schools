@@ -38,7 +38,7 @@ export default function ProfilePage(){
                     <hr />
                     <div className="py-2">
                         <span>INTERESTS</span>
-                        <span><button className="btn btn-warning m-0 px-4 float-end heading text-white">Edit</button></span>
+                        <span><button className="btn btn-warning m-0 px-4 float-end heading text-white" onClick={()=>showChangeInterests(true)}>Edit</button></span>
                     </div>
                 </div>
             </div>
