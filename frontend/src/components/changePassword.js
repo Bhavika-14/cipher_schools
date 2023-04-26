@@ -1,4 +1,5 @@
 import React,{ useState,useEffect } from "react"
+import axios from "axios"
 
 export default function ChangePassword({showChangePassword,user,setUser}){
     const [newPassword,setNewPassword]=useState("")
@@ -12,16 +13,16 @@ export default function ChangePassword({showChangePassword,user,setUser}){
 
     }
     return(
-        <form className="p-2" onSubmit={onSubmit}>
-            <div className="row mb-3">
+        <form className="p-2 container updatefeature" onSubmit={onSubmit}>
+            <div className="row m-3">
                 <label for="currentPassword" className="col-form-label">Current Password</label>
                 <input type="password" id="currentPassword" className="form-control" placeholder="Current Password" />
             </div>
-            <div className="row mb-3">
+            <div className="row m-3">
                 <label for="newPassword" className="col-form-label">New Password</label>
                 <input type="password" id="newPassword" className="form-control" placeholder="New Password" onChange={(e)=>setNewPassword(e.target.value)} />
             </div>
-            <div className="row mb-3">
+            <div className="row m-3">
                 <label for="confirmPassword" className="col-form-label">Confirm Password</label>
                 <input type="password" id="confirmPassword" className="form-control" placeholder="Conform Password" />
             </div>

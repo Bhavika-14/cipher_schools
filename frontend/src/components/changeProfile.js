@@ -1,4 +1,5 @@
 import React,{ useState,useEffect } from "react"
+import axios from "axios"
 
 export default function ChangePassword({showChangeProfile,user,setUser}){
     const [firstName,setFirstName]=useState(user.first_name)
@@ -23,7 +24,7 @@ export default function ChangePassword({showChangeProfile,user,setUser}){
 
     }
     return(
-        <form className="p-2" onSubmit={onSubmit}>
+        <form className="p-2 updatefeature" onSubmit={onSubmit}>
             <div className="row mb-3">
                 <label for="firstname" className="col-form-label">First Name</label>
                 <input type="text" id="firstname" className="form-control" placeholder={firstName} onChange={(e)=>setFirstName(e.target.value)} />
@@ -41,7 +42,7 @@ export default function ChangePassword({showChangeProfile,user,setUser}){
                 <input type="text" id="mobile" className="form-control" placeholder="Enter your Mobile Number" onChange={(e)=>setMobile(e.target.value)} />
             </div>
             <span className="m-2">
-                <button className="float-end btn btn-dark text-white px-2" onClick={()=>showChangePassword(false)}>
+                <button className="float-end btn btn-dark text-white px-2" onClick={()=>showChangeProfile(false)}>
                     Cancel
                 </button>
             </span>
