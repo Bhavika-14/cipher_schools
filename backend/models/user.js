@@ -7,7 +7,8 @@ var UserSchema=new Schema(
         email:{type:String ,  maxLength:100},
         password:{type:String, minLength:8},
         interests:{type:Array},
-        folloewrs:{type:Array}
+        followers:{type:Array},
+        mobile:{type:String, maxLength:10}
 
     }
 )

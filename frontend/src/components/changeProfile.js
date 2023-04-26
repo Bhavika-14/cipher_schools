@@ -1,33 +1,44 @@
 import React,{ useState,useEffect } from "react"
 
-export default function ChangePassword({showChangePassword,user,setUser}){
-    const [firstName,setFirstName]=useState("")
-    const [email,setEmail]=useState("")
-    const [lastName,setLastName]=useState("")
+export default function ChangePassword({showChangeProfile,user,setUser}){
+    const [firstName,setFirstName]=useState(user.first_name)
+    const [email,setEmail]=useState(user.last_name)
+    const [lastName,setLastName]=useState(user.email)
     const [mobile,setMobile]=useState("")
-    
+
+    var new_profile={
+        first_name:firstName,
+        last_name:lastName,
+        email:email,
+        mobile:mobile
+    }
+
     const onSubmit=async(e)=>{
         e.preventDefault()
-        const result=await axios.put(`http:localhost:3000/updatePassword/${user._id}`,{password:newPassword})
+        const result=await axios.put(`http:localhost:3000/updatePassword/${user._id}`,new_profile)
         if(result){
             setUser(result.data)
         }
-        showChangePassword(false)
+        showChangeProfile(false)
 
     }
     return(
         <form className="p-2" onSubmit={onSubmit}>
             <div className="row mb-3">
-                <label for="currentPassword" className="col-form-label">Current Password</label>
-                <input type="password" id="currentPassword" className="form-control" placeholder="Current Password" />
+                <label for="firstname" className="col-form-label">First Name</label>
+                <input type="text" id="firstname" className="form-control" placeholder={firstName} onChange={(e)=>setFirstName(e.target.value)} />
             </div>
             <div className="row mb-3">
-                <label for="newPassword" className="col-form-label">New Password</label>
-                <input type="password" id="newPassword" className="form-control" placeholder="New Password" onChange={(e)=>setNewPassword(e.target.value)} />
+                <label for="lastname" className="col-form-label">Last Name</label>
+                <input type="lastname" id="laastname" className="form-control" placeholder={lastName} onChange={(e)=>setLastName(e.target.value)} />
             </div>
             <div className="row mb-3">
-                <label for="confirmPassword" className="col-form-label">Confirm Password</label>
-                <input type="password" id="confirmPassword" className="form-control" placeholder="Conform Password" />
+                <label for="email" className="col-form-label">Email Address</label>
+                <input type="email" id="email" className="form-control" placeholder={email} onChange={(e)=>setEmail(e.target.value)} />
+            </div>
+            <div className="row mb-3">
+                <label for="mobile" className="col-form-label">Mobile Number</label>
+                <input type="text" id="mobile" className="form-control" placeholder="Enter your Mobile Number" onChange={(e)=>setMobile(e.target.value)} />
             </div>
             <span className="m-2">
                 <button className="float-end btn btn-dark text-white px-2" onClick={()=>showChangePassword(false)}>
